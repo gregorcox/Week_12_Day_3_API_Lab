@@ -13,6 +13,7 @@ SelectView.prototype.bindEvents = function () {
   this.element.addEventListener('change', (evt) => {
     const selectedIndex = evt.target.value;
     PubSub.publish('SelectView:change', selectedIndex);
+
   });
 };
 
@@ -20,7 +21,7 @@ SelectView.prototype.populate = function (countriesData) {
   countriesData.forEach((country, index) => {
     const option = document.createElement('option');
     option.textContent = country.name;
-    option.value = index;
+    option.value = country.name;
     this.element.appendChild(option);
   })
 };

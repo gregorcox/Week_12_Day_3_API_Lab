@@ -10,7 +10,26 @@ Countries.prototype.getData = function () {
   request.get((data) => {
     this.text = data;
     PubSub.publish('Countries:countries-loaded', this.text);
+
   });
 };
+
+Countries.prototype.bindEvents = function () {
+  PubSub.subscribe('SelectView:change', (evt) => {
+    const selectedCountry = evt.detail;
+    this.findCountryByIndex(selectedCountry);
+  })
+
+};
+
+Countries.prototype.findCountryByIndex = function (name) {
+  for (country of this.text){
+    if (country.name == name) {
+      PubSub.publish('Countries:found-country', country)
+    }
+  }
+};
+
+
 
 module.exports = Countries;

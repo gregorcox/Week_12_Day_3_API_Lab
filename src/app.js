@@ -9,12 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const countries = new Countries();
   countries.getData();
+  countries.bindEvents();
 
   const countriesDropdown = new SelectView(selectElement);
   countriesDropdown.bindEvents();
 
-  // const infoDiv = document.querySelector('div#country')
-  // const countryInfoDisplay = new ResultView(infoDiv);
-  // countryInfoDisplay.bindEvents();
+  const infoDiv = document.querySelector('div#country')
+  const countryInfoDisplay = new ResultView(infoDiv);
+  countryInfoDisplay.bindEvents();
 
 });
