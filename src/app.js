@@ -4,9 +4,17 @@ const ResultView = require('./views/result_view.js');
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  const selectElement = document.querySelector('select#countries');
   console.log('JavaScript Loaded');
 
   const countries = new Countries();
   countries.getData();
-  
+
+  const countriesDropdown = new SelectView(selectElement);
+  countriesDropdown.bindEvents();
+
+  // const infoDiv = document.querySelector('div#country')
+  // const countryInfoDisplay = new ResultView(infoDiv);
+  // countryInfoDisplay.bindEvents();
+
 });
